@@ -1,0 +1,19 @@
+{
+  "name": "gamingassistantedisc",
+  "version": "1.0.0",
+  "main": "src/bot.js",
+  "scripts": {
+    "start": "node src/bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.14.0",
+    "discord.js": "^14.26.0",
+    "dotenv": "^17.4.0",
+    "openai": "^6.33.0"
+  }
+}
