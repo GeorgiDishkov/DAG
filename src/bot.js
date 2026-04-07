@@ -7,6 +7,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
+require('./services/heartbeatService').startHeartbeat();
 
 app.get('/', (req, res) => {
   res.send('Bot is running!');

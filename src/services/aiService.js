@@ -1,8 +1,7 @@
-const OpenAI = require('openai');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 const aiService = {
   async getBuildExplanation(champion, buildData) {
@@ -13,14 +12,11 @@ Best build: ${buildData.items.join(', ')}
 Runes: ${buildData.runes.join(', ')}
 Explain why this works and when to use it concisely.`;
 
-      const completion = await openai.chat.completions.create({
-        messages: [{ role: "user", content: prompt }],
-        model: "gpt-4o",
-      });
-
-      return completion.choices[0].message.content;
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      return response.text();
     } catch (error) {
-      console.error('Error getting AI explanation:', error);
+      console.error('Error getting AI explanation (Gemini):', error);
       return "I couldn't generate an explanation right now.";
     }
   },
@@ -36,14 +32,11 @@ Explain impact in simple terms
 Give 2–3 actionable tips
 Keep it short and practical.`;
 
-      const completion = await openai.chat.completions.create({
-        messages: [{ role: "user", content: prompt }],
-        model: "gpt-4o",
-      });
-
-      return completion.choices[0].message.content;
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      return response.text();
     } catch (error) {
-      console.error('Error summarizing patch notes:', error);
+      console.error('Error summarizing patch notes (Gemini):', error);
       return "I couldn't summarize the patch notes.";
     }
   }
