@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "src/bot.js",
   "scripts": {
-    "start": "nodemon src/bot.js",
+    "start": "node src/bot.js",
+    "dev": "nodemon src/bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
