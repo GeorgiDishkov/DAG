@@ -1,12 +1,5 @@
 const axios = require('axios');
 const OpenAI = require('openai');
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-const axios = require('axios');
-const OpenAI = require('openai');
 const cheerio = require('cheerio');
 
 const openai = new OpenAI({
