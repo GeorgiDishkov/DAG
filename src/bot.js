@@ -3,6 +3,20 @@ const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 
+// --- FAKE WEB SERVER START ---
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.send('Bot is running!');
+});
+
+app.listen(port, () => {
+  console.log(`Web server listening on port ${port}`);
+});
+// --- FAKE WEB SERVER END ---
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
