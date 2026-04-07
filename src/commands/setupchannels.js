@@ -8,7 +8,7 @@ module.exports = {
       return message.reply('You do not have permission to manage channels.');
     }
 
-    const channels = ['top', 'mid', 'bot'];
+    const channels = ['top', 'mid', 'bot', 'jungle'];
     for (const name of channels) {
       const channel = await message.guild.channels.create({
         name: name,
